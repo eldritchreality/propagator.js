@@ -10,9 +10,10 @@ function Propagator(func,input,output) {
       var self = this
       
       assert(func && input && output, "You need to call the propagator constructor with all three of a function, input cell and output cell")
-      assert(input instanceof Cell || input instanceof Array,  "Propagators read from cells or lists of cells, not", typeof input)
-      assert(output instanceof Cell, "Propagators output to single cells, not", typeof output)
+      assert(input instanceof Cell || input instanceof Array,  "Propagators read from cells or lists of cells, not " + typeof input)
+      assert(output instanceof Cell, "Propagators output to single cells, not " + typeof output)
       assert(input !== output, "Propagators shouldn't write out to the same cell they read from.")
+      if (input instanceof Array) input.forEach( (cell) => assert(cell instanceof Cell,"All inputs need to be cells, not " + typeof cell ) );
      
       this.input = coerceToArray(input);
       this.output = output;
