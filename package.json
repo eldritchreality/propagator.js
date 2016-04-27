@@ -1,0 +1,29 @@
+{
+  "name": "propagator.js",
+  "version": "0.0.1",
+  "description": "A propagator library borrowing heavily from Radul & Sussman's The Art of the Propagator",
+  "main": "propagator.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eldritchreality/propagator.js.git"
+  },
+  "keywords": [
+    "propagators"
+  ],
+  "author": {
+	"name":"eldritchreality",
+	"url":"http://github.com/eldritchreality"
+  },
+  "devDependencies":{
+    "mocha" : "^2.4.5",
+    "chai"  : "^3.5.0"
+  },
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/eldritchreality/propagator.js/issues"
+  },
+  "homepage": "https://github.com/eldritchreality/propagator.js#readme"
+}
