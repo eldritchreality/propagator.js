@@ -1,4 +1,5 @@
 var Cell = require("./propagator-cell.js")
+var assert = require("assert")
 
 function coerceToArray(object) {
     if (!(object instanceof Array)) return [object];
