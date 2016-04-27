@@ -8,6 +8,7 @@ function coerceToArray(object) {
 function Propagator(func,input,output) {
       var self = this
       
+      assert(func && input && output, "You need to call the propagator constructor with all three of a function, input cell and output cell")
       assert(input instanceof Cell || input instanceof Array,  "Propagators read from cells, not", typeof input)
       assert(output instanceof Cell, "Propagators output to cells, not", typeof output)
       assert(input !== output, "Propagators shouldn't write out to the same cell they read from.")
@@ -30,5 +31,8 @@ function Propagator(func,input,output) {
     
       this.input.forEach( (cell) => cell.addListener(self.propagate) ) 
 }
+
+Propagator.makeCell = function makeCell() {return new Cell};
+Propagator.prototype.makeCell = Propagator.makeCell;
 
 module.exports = Propagator
