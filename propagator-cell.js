@@ -27,6 +27,7 @@ function Cell () {
         self.lastUpdater = caller || self.lastUpdater 
         
         updateListeners(caller)
+        return self
         
     }
     
@@ -34,6 +35,7 @@ function Cell () {
         assert(typeof listener == "function", "Tried to add a propagator to a cell that wasn't a function")
         self.listeners.add(listener)        
         updateListeners()
+        return self
     }
     
     this.getContents = function getContents() {
