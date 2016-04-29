@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/eldritchreality/propagator.js.svg?branch=master)](https://travis-ci.org/eldritchreality/propagator.js) [![Coverage Status](https://coveralls.io/repos/github/eldritchreality/propagator.js/badge.svg?branch=master)](https://coveralls.io/github/eldritchreality/propagator.js?branch=master)
+
+
 #### Cells
 Found at propagator-cell.js  
 Cells carry a value and a list of propagators to update when the value changes  
