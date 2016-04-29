@@ -48,6 +48,25 @@ describe("The propagator constructor",function() {
         expect(mockOutputCell.getContents()).to.equal(addValuesTogether(10,1,1))
     }) 
      
+    it("should not update an output cell unless all of its input cells have values",function(){
+        var mockInputCell1 = Propagator.makeCell()
+        var mockInputCell2 = Propagator.makeCell()
+        var mockInputCell3 = Propagator.makeCell()
+        var mockOutputCell = Propagator.makeCell()
+        var addValuesTogether = ((x,y,z) => x+y+z)
+        
+        var testPropagator = new Propagator(addValuesTogether,[mockInputCell1,mockInputCell2,mockInputCell3],mockOutputCell);
+        
+        mockInputCell1.update(1)
+        expect(mockOutputCell.getContents()).to.be.undefined;
+        
+        mockInputCell2.update(10)
+        expect(mockOutputCell.getContents()).to.be.undefined;
+        
+        mockInputCell3.update(100)
+        expect(mockOutputCell.getContents()).to.equal(addValuesTogether(1,10,100))
+    })
+     
     it("should throw an error when the constructor is called with no arguments",function(){
         
         expect( () => new Propagator() ).to.throw(Error)

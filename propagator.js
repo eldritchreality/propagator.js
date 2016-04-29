@@ -19,16 +19,23 @@ function Propagator(func,input,output) {
       this.output = output;
     
       function applyFuncToInputs() {
-          var inputValues = self.input.map((cell) => cell.getContents())
+          var inputs = self.input.map((cell) => cell.getContents())
+          var output = {"value" : undefined, "usable" : false}
           
-          return func.apply(null,inputValues);
+          inputs.fullyPopulated = inputs.every((value) => typeof value !== "undefined")
+         
+          if(inputs.fullyPopulated) {
+              output.value = func.apply(null,inputs);
+              output.usable = true;
+          }
           
+          return output;
       }
    
       this.propagate = function propagate() {
           
           var outputValues = applyFuncToInputs();
-          self.output.update(outputValues, self)
+          if (outputValues.usable) self.output.update(outputValues.value, self)
       }
     
       this.input.forEach( (cell) => cell.addListener(self.propagate) ) 
