@@ -1,0 +1,12 @@
+language: node_js
+
+node_js:
+  - "5"
+  - "4"
+  
+# whitelist
+branches:
+  only:
+    - master
+    
+after_success: "npm run-script travis-coverage"
