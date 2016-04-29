@@ -4,7 +4,8 @@
   "description": "A propagator library borrowing heavily from Radul & Sussman's The Art of the Propagator",
   "main": "propagator.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec"
+    "coverage": "$(npm bin)/istanbul cover $(npm bin)/_mocha -- -R spec",
+    "test": "$(npm bin)/_mocha -R spec"
   },
   "repository": {
     "type": "git",
@@ -14,12 +15,15 @@
     "propagators"
   ],
   "author": {
-	"name":"eldritchreality",
-	"url":"http://github.com/eldritchreality"
+    "name": "eldritchreality",
+    "url": "http://github.com/eldritchreality"
   },
-  "devDependencies":{
-    "mocha" : "^2.4.5",
-    "chai"  : "^3.5.0"
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "coveralls": "^2.11.9",
+    "istanbul": "^0.4.3",
+    "mocha": "^2.4.5",
+    "mocha-lcov-reporter": "^1.2.0"
   },
   "license": "BSD-2-Clause",
   "bugs": {
