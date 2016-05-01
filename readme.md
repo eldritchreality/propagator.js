@@ -23,11 +23,13 @@ output: `name : value`
 #### Propagators
 Found at propagator.js  
 Propagators do something with a value when it has changed. They carry no state, they are purely a function of cells.  
+This is the primary interface to the module, you can access all constructors as methods on the Propagator object.
 
 methods:
 
 *   constructor: takes a function, a list of input cells, and and output cell. Registers a function on the input cells that sets the output cells whenever the input cells change value.
 *   makeCell: returns a newly created blank cell.
+*   addProbe: adds a probe with a "name" to a Cell. Api as listed for probe.js
 
 #### Constants
 *Not implemented yet*  

@@ -10,6 +10,13 @@ describe("The propagator constructor",function() {
         expect(testCell instanceof Cell).to.be.true
     })
     
+    it("should add a probe to a cell when asked", function(){
+        var testCell = Propagator.makeCell()
+        
+        Propagator.addProbe("Test Cell:",testCell)
+        expect(testCell.listeners.size).to.equal(1)
+    })
+    
     it("should make a new propagator when correctly called", function() {
         var mockInputCell = Propagator.makeCell()
         var mockOutputCell = Propagator.makeCell()

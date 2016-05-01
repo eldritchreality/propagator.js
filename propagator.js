@@ -1,4 +1,5 @@
 var Cell = require("./propagator-cell.js")
+var probe = require("./probe.js")
 var assert = require("assert")
 
 function coerceToArray(object) {
@@ -43,5 +44,8 @@ function Propagator(func,input,output) {
 
 Propagator.makeCell = function makeCell() {return new Cell};
 Propagator.prototype.makeCell = Propagator.makeCell;
+
+Propagator.addProbe = probe
+Propagator.prototype.addProbe = Propagator.addProbe
 
 module.exports = Propagator
