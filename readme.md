@@ -22,7 +22,7 @@ output: `name : value`
 
 #### Propagators
 Found at propagator.js  
-Propagators do something with a value when it has changed. They carry no state, they are purely a function of cells.  
+Propagators do something with a value when it has changed. They carry no state, they are purely a function of cells. Propagators will not run until all their upstream cells hold values.  
 This is the primary interface to the module, you can access all constructors as methods on the Propagator object.
 
 methods:

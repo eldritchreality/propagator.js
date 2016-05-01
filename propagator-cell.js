@@ -15,7 +15,7 @@ function Cell () {
     
     this.update = function update(update,caller) {
         //check invariants
-        assert(typeof update !== "undefined","Tried to update a cell without sending a value") 
+        if (typeof update !== "undefined","Tried to update a cell without sending a value") 
         caller = caller || false
         
         //check permissions
