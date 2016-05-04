@@ -1,6 +1,6 @@
 {
   "name": "propagator.js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A propagator library borrowing heavily from Radul & Sussman's The Art of the Propagator",
   "main": "propagator.js",
   "scripts": {
