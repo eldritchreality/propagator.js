@@ -31,7 +31,7 @@ describe("A propagator Cell",function(){
       expect(testCell.addListener.bind(this,15)).to.throw(Error)
    })
    
-   it("should update it's contents when update() is called",function(){
+   it("should update it's contents when update() is called",function() {
         var testCell = new Cell()
         var testValue = "test_value"
         
@@ -40,6 +40,15 @@ describe("A propagator Cell",function(){
         expect(contents).to.equal(testValue);
     })
 
+   it("should disallow updates to cells with existing values if the caller does not pass an identity",function() {
+        var testCell = new Cell()
+        var testValue = "test_value"
+        var testUpdate = "new_value"
+      
+        testCell.update(testValue)
+        expect(testCell.update.bind(testCell,testUpdate)).to.throw(Error)
+   })
+   
    it("should update its listeners when its content changes",function(){
        var testCell = new Cell()
        var testValue = 0;
