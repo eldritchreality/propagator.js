@@ -7,14 +7,22 @@ function coerceToArray(object) {
     else return object;
 }
 
-function Propagator(func,input,output) {
+function mergeByUpdate(prev,update) {
+    return update;
+}
+
+function Propagator(func,input,output,mergeStrategy) {
       var self = this
       
       assert(func && input && output, "You need to call the propagator constructor with all three of a function, input cell and output cell")
+      assert(func instanceof Function, "You need to call a propagator with a function as the first argument")
       assert(input instanceof Cell || input instanceof Array,  "Propagators read from cells or lists of cells, not " + typeof input)
       assert(output instanceof Cell, "Propagators output to single cells, not " + typeof output)
       assert(input !== output, "Propagators shouldn't write out to the same cell they read from.")
       if (input instanceof Array) input.forEach( (cell) => assert(cell instanceof Cell,"All inputs need to be cells, not " + typeof cell ) );
+      if (typeof mergeStrategy != "undefined") {
+          assert(mergeStrategy instanceof Function, "your merge callback "+ mergeStrategy.toString() + " must be a function not a " + typeof mergeStrategy)
+      }
      
       this.input = coerceToArray(input);
       this.output = output;
@@ -32,7 +40,9 @@ function Propagator(func,input,output) {
           
           return output;
       }
-   
+    
+      this.merge = mergeStrategy || mergeByUpdate
+      
       this.propagate = function propagate() {
           
           var outputValues = applyFuncToInputs();
